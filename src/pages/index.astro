@@ -1,11 +1,62 @@
 ---
+import ImagePopout from '../components/ImagePopout.astro';
+import Navigation from '../components/Navigation.astro';
 import Layout from '../layouts/Layout.astro';
+
+const year = new Date().getFullYear();
+const startYear = 2016;
+const birthyear = 2005
 ---
 
 <Layout title="KibbeWater">
-	<main class="w-screen h-screen flex justify-center items-center bg-gradient-to-br from-violet-700 via-pink-700 to-yellow-300">
-		<div class="w-96 h-48 flex justify-center items-center bg-white/10 rounded-xl backdrop-blur-md shadow-lg hover:shadow-xl transition-all ease-in-out duration-500 translate-y-0 hover:-translate-y-2 hover:cursor-pointer">
-			<h1 class="text-6xl font-extralight font-roboto text-white">BRB...</h1>
-		</div>
+	<main class="w-screen relative">
+		<Navigation className='fixed z-50 top-4 left-4' />
+        <section class="w-full h-screen flex justify-evenly bg-gradient-to-br from-orange-300 to-orange-400 drop-shadow-lg" id="home">
+            <div class="justify-center items-center flex gap-12">
+                <div>
+                    <h1 class="text-4xl font-bold text-white select-none cursor-default">Hello, I'm <span class="bg-gradient-to-br bg-clip-text text-transparent from-blue-600 to-cyan-400">Snow</span> 👋🏻</h1>
+                    <p class="text-lg text-white select-none cursor-default">Hobbyist Full-Stack Web Developer</p>
+                </div>
+                <ImagePopout />
+            </div>
+        </section>
+        <section class="w-full py-12 flex flex-col gap-8 px-56 justify-center bg-orange-300" id="about-me">
+            <h1 class="text-4xl font-bold text-center select-none cursor-default text-white">Who am I?</h1>
+            <div class="flex flex-col gap-6 text-neutral-100 text-lg font-medium text-center">
+                <p>I'm a {year - birthyear} year old student from Sweden. I'm highly interested in Software/Web Development and other electronics</p>
+                <p>
+                    I've been a coder since 5th grade which is now about {year - startYear} years ago. 
+                    I started out learning Unity and Game Development, there I learned C# during my journey, 
+                    this would inevitably start my long coding journey. As I'm now self-learnt in JS/TS, C#, C/C++, Lua and PHP. 
+                    I'm also currently learning about some Web frameworks, mostly React.js along with Next.js.
+                </p>
+                <p>
+                    I was always interested in computers as a kid and was usually spending my time learning how to work them, 
+                    I was usually the "IT kid" who would help out if there were issues with computers in the school. 
+                    I then around 4th grade started attending a tech club sort of where they did some basic coding on what's called a "CodeBug", 
+                    it's like a programmable chip with some LEDs and buttons for a younger audience. 
+                    I eventually stopped going there cause it was pretty underwhelming and about a year or 2 later started coding in Unity to go on to create several hobby projects
+                </p>
+                <p>
+                    I was learning coding in Unity up until 7th grade when I started branching out to creating software that (mostly) could solve some niche problems of mine.
+                </p>
+                <p>
+                    It wasn't until the next year I started with other languages such as PHP and Lua. 
+                    I started doing some hobby projects in PHP and would eventually ended up creating my first website.
+                    During this time I also learned Lua which I would end up working for several years and start to get my first source of income selling LUA scripts, 
+                    I won't mention what I made but you will no doubt find it by googling my name. 
+                    I would end up doing this for another 2 years where I started getting into C/C++ and JS
+                </p>
+                <p>
+                    In my first year of High School, I began reverse engineering software and coding in C/C++,
+                    this led me to learn some barebone game hacking/reversing using mostly static analysis tools.
+                </p>
+                <p>
+                    After the first term of the first year, I started learning JavaScript as I was interested in learning how to do modern web development, 
+                    I swiftly learned about React.js and Next.js where I would start making some test websites, I also learned how to make backends and things of the sort.
+                    This is sort of where I'm at right now, I'm part-time hired as a Web Developer for an agency and I'm also working on some personal projects.
+                </p>
+            </div>
+        </section>
 	</main>
 </Layout>
