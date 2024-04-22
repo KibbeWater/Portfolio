@@ -5,16 +5,20 @@ interface Props {
 	src: ImageMetadata;
 	alt: string;
     href: string;
+
+    socials?: { icon: ImageMetadata; href: string }[];
 }
 
-const { src, alt, href } = Astro.props;
+const { src, alt, href, socials } = Astro.props;
+
+let projectName = href.split('/').pop();
 ---
 
 <div class='flex justify-center items-center relative'>
     <div class="w-64 h-64 relative">
         <div class='max-w-[16rem] max-h-64 flex rounded-2xl bg-neutral-100 hover:max-h-96 hover:max-w-[28rem] hover:z-10 absolute bottom-0 left-0 transition-all duration-300 overflow-hidden group/card shadow-xl hover:-translate-y-2'>
             <div class="w-64 flex-none">
-                <Image class='object-cover w-64 h-64' src={src} alt={alt} transition:name='project-icon' transition:persist />
+                <Image class='h-64 w-64 rounded-2xl object-cover' src={src} alt={alt} transition:persist=`project-icon-${projectName}` transition:animate={'fade'} />
             </div>
             <div class="w-48 flex flex-col justify-between flex-none px-3 py-3 group-hover/card:opacity-100 opacity-0 transition duration-300">
                 <div class="w-full">
@@ -22,10 +26,9 @@ const { src, alt, href } = Astro.props;
                 </div>
                 <div class="w-full flex flex-col gap-2 flex-none">
                     <div class="flex gap-1">
-                        <div class="w-5 h-5 rounded-full bg-red-500"></div>
-                        <div class="w-5 h-5 rounded-full bg-red-500"></div>
-                        <div class="w-5 h-5 rounded-full bg-red-500"></div>
-                        <div class="w-5 h-5 rounded-full bg-red-500"></div>
+                        {socials?.map(({icon, href}) =>
+                            <a href={href} target="_blank"><Image src={icon} class="w-5 h-5 rounded-full" alt={"Socials icon"} /></a>
+                        )}
                     </div>
                     <a href={href} class="rounded-full bg-orange-200 hover:bg-orange-300 transition duration-300 px-4 w-full py-1 text-base text-center">Read More</a>
                 </div>

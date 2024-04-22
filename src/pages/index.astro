@@ -8,6 +8,9 @@ import Memoji from "../assets/Memoji.png";
 import TwatterIcon from "../assets/Project/Twatter.png";
 import SHLIcon from "../assets/Project/SHL.png";
 
+import GithubIcon from "../assets/Socials/Github.svg";
+import GlobeIcon from "../assets/Socials/Globe.svg";
+
 const year = new Date().getFullYear();
 const startYear = 2016;
 const birthyear = 2005
@@ -66,8 +69,14 @@ const birthyear = 2005
         <section class="w-full flex flex-col gap-12 px-24 py-12 relative bg-orange-100 overflow-hidden" id="projects">
             <h1 class="text-4xl font-bold text-center select-none cursor-default text-black">Projects</h1>
             <div class="grid lg:grid-cols-5 md:grid-cols-4 grid-cols-3 gap-8">
-                <ExpandedCard src={TwatterIcon} alt='Twatter' href='/project/twatter'>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget sapien</p>
+                <ExpandedCard src={TwatterIcon} alt='Twatter' href='/project/twatter' socials={[
+                    { icon: GlobeIcon, href: 'https://twatter.kibbewater.com' },
+                    { icon: GithubIcon, href: 'https://github.com/KibbeWater/Twatter' },
+                ]}>
+                    <p class="text-sm">
+                        <span class="font-semibold text-base">Twatter</span><br />
+                        A social media platform that allows users to post tweets, follow other users, and like tweets. It was built using React, Next.js and the T3 stack.
+                    </p>
                 </ExpandedCard>
                 <ExpandedCard src={SHLIcon} alt='SHL' href='/project/shl'>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget sapien</p>
