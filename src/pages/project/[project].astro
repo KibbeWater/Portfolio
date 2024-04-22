@@ -1,8 +1,13 @@
 ---
 import Image from 'astro/components/Image.astro';
-import Twatter from '../../assets/Project/Twatter.png';
-import GitHub from '../../assets/Socials/Github.svg';
+
 import Layout from '../../layouts/Layout.astro';
+
+
+import Twatter from '../../assets/Project/Twatter.png';
+import SHL from '../../assets/Project/SHL.png';
+
+import GitHub from '../../assets/Socials/Github.svg';
 
 export function getStaticPaths() {
 	return [{ params: { project: 'twatter' } }, { params: { project: 'shl' } }];
@@ -23,6 +28,15 @@ const projects: {
 			href: 'https://github.com/KibbeWater/Twatter',
 		},
 	},
+    shl: {
+        title: 'SHL',
+        image: SHL,
+        description: 'SHL is an iOS app that allows users to view the current standings, schedule, and statistics for the Swedish Hockey League. It was built using Swift and SwiftUI with a TypeScript backend.',
+        socials: {
+            icon: GitHub,
+            href: 'https://github.com/KibbeWater/SHL',
+        },
+    },
 };
 
 const { title, image, description, socials } = projects[project];
