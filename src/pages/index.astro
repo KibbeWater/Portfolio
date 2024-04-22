@@ -70,16 +70,21 @@ const birthyear = 2005
             <h1 class="text-4xl font-bold text-center select-none cursor-default text-black">Projects</h1>
             <div class="grid lg:grid-cols-5 md:grid-cols-4 grid-cols-3 gap-8">
                 <ExpandedCard src={TwatterIcon} alt='Twatter' href='/project/twatter' socials={[
-                    { icon: GlobeIcon, href: 'https://twatter.kibbewater.com' },
-                    { icon: GithubIcon, href: 'https://github.com/KibbeWater/Twatter' },
+                    { icon: GlobeIcon, name: 'Website', href: 'https://twatter.kibbewater.com' },
+                    { icon: GithubIcon, name: 'GitHub', href: 'https://github.com/KibbeWater/Twatter' },
                 ]}>
                     <p class="text-sm">
                         <span class="font-semibold text-base">Twatter</span><br />
                         A social media platform that allows users to post tweets, follow other users, and like tweets. It was built using React, Next.js and the T3 stack.
                     </p>
                 </ExpandedCard>
-                <ExpandedCard src={SHLIcon} alt='SHL' href='/project/shl'>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget sapien</p>
+                <ExpandedCard src={SHLIcon} alt='SHL' href='/project/shl' socials={[
+                    { icon: GithubIcon, name: 'GitHub', href: 'https://github.com/KibbeWater/SHL' },
+                ]}>
+                    <p class="text-sm">
+                        <span class="font-semibold text-base">SHL</span><br />
+                        An iOS app that allows users to view the current standings, schedule, and statistics for the Swedish Hockey League. It was built using SwiftUI with a TypeScript backend.
+                    </p>
                 </ExpandedCard>
             </div>
         </section>

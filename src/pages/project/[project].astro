@@ -3,11 +3,11 @@ import Image from 'astro/components/Image.astro';
 
 import Layout from '../../layouts/Layout.astro';
 
-
 import Twatter from '../../assets/Project/Twatter.png';
 import SHL from '../../assets/Project/SHL.png';
 
 import GitHub from '../../assets/Socials/Github.svg';
+import Globe from '../../assets/Socials/Globe.svg';
 
 export function getStaticPaths() {
 	return [{ params: { project: 'twatter' } }, { params: { project: 'shl' } }];
@@ -16,36 +16,76 @@ export function getStaticPaths() {
 const { project } = Astro.params;
 
 const projects: {
-	[key: string]: { title: string; image: ImageMetadata; description: string; socials: { icon: ImageMetadata; href: string } };
+	[key: string]: {
+		title: string;
+		image: ImageMetadata;
+		shortDescription: string;
+		description: string;
+		socials: { icon: ImageMetadata; name: string; href: string }[];
+	};
 } = {
 	twatter: {
 		title: 'Twatter',
 		image: Twatter,
-		description:
+		shortDescription:
 			'Twatter is a social media platform that allows users to post tweets, follow other users, and like tweets. It was built using React, Node.js, and MongoDB.',
-		socials: {
-			icon: GitHub,
-			href: 'https://github.com/KibbeWater/Twatter',
-		},
+        description:
+            '',
+		socials: [
+			{
+				icon: Globe,
+                name: 'Website',
+				href: 'https://twatter.kibbewater.com',
+			},
+			{
+				icon: GitHub,
+                name: 'GitHub',
+				href: 'https://github.com/KibbeWater/Twatter',
+			},
+		],
 	},
-    shl: {
-        title: 'SHL',
-        image: SHL,
-        description: 'SHL is an iOS app that allows users to view the current standings, schedule, and statistics for the Swedish Hockey League. It was built using Swift and SwiftUI with a TypeScript backend.',
-        socials: {
-            icon: GitHub,
-            href: 'https://github.com/KibbeWater/SHL',
-        },
-    },
+	shl: {
+		title: 'SHL Matchtracker',
+		image: SHL,
+		shortDescription:
+			'SHL is an iOS app that allows users to view the current standings, schedule, and statistics for the Swedish Hockey League. It was built using Swift and SwiftUI with a TypeScript backend.',
+        description:
+            ['The app was originally a hobby/prototype project of mine to capture event updates from an Event Stream. I then picked it up as a school project instead, developing it to bring the SHL website (and some more) into an convenient and a beatiful app for your phone. The app is also intended to integrate as much as possible into iOS with features such as Live Activities'].join('\n'),
+		socials: [
+			{
+				icon: GitHub,
+                name: 'GitHub',
+				href: 'https://github.com/KibbeWater/SHL',
+			},
+		],
+	},
 };
 
-const { title, image, description, socials } = projects[project];
+const { title, image, shortDescription, description, socials } = projects[project];
 ---
 
 <Layout title=`Project: ${title}`>
-    <main class="w-screen h-screen bg-gradient-to-br from-orange-300 to-orange-400 flex justify-center items-center">
-        <div class="w-9/12 h-4/6 px-4 py-4 rounded-3xl bg-white/25 border border-white/[0.18] shadow-lg backdrop-blur-sm">
-            <Image src={image} alt={title} class="h-64 w-64 rounded-2xl object-cover" transition:persist=`project-icon-${project}` transition:animate={'fade'} />
-        </div>
-    </main>
+	<main class='w-screen h-screen bg-gradient-to-br from-orange-300 to-orange-400 flex justify-center items-center'>
+		<div class='w-9/12 h-4/6 px-4 py-4 rounded-3xl bg-white/25 border border-white/[0.18] shadow-lg backdrop-blur-sm flex gap-8'>
+			<div class='flex-none flex flex-col gap-4'>
+				<Image
+					src={image}
+					alt={title}
+					class='h-64 w-64 rounded-2xl object-cover'
+					transition:persist=`project-icon-${project}`
+					transition:animate={'fade'}
+				/>
+                <!-- <div class="flex gap-2">
+                    {socials.map((({icon, name, href}) => (
+                        <a href={href} target="_blank" transition:name={`project-s-${name}-${project}`}><Image src={icon} class="w-7 h-7 rounded-full" alt={name} /></a>
+                    )))}
+                </div> -->
+			</div>
+			<div>
+				<h1 class='text-4xl font-bold'>{title}</h1>
+				<p class='mb-4 leading-tight'>{shortDescription}</p>
+                <p>{description}</p>
+			</div>
+		</div>
+	</main>
 </Layout>

@@ -6,7 +6,7 @@ interface Props {
 	alt: string;
     href: string;
 
-    socials?: { icon: ImageMetadata; href: string }[];
+    socials?: { icon: ImageMetadata; name: string; href: string }[];
 }
 
 const { src, alt, href, socials } = Astro.props;
@@ -26,8 +26,8 @@ let projectName = href.split('/').pop();
                 </div>
                 <div class="w-full flex flex-col gap-2 flex-none">
                     <div class="flex gap-1">
-                        {socials?.map(({icon, href}) =>
-                            <a href={href} target="_blank"><Image src={icon} class="w-5 h-5 rounded-full" alt={"Socials icon"} /></a>
+                        {socials?.map(({icon, name, href}) =>
+                            <a href={href} target="_blank" transition:name={`project-s-${name}-${projectName}`}><Image src={icon} class="w-5 h-5 rounded-full" alt={"Socials icon"} /></a>
                         )}
                     </div>
                     <a href={href} class="rounded-full bg-orange-200 hover:bg-orange-300 transition duration-300 px-4 w-full py-1 text-base text-center">Read More</a>
