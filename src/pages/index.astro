@@ -1,7 +1,12 @@
 ---
+import ExpandedCard from '../components/ExpandedCard.astro';
 import ImagePopout from '../components/ImagePopout.astro';
 import Navigation from '../components/Navigation.astro';
 import Layout from '../layouts/Layout.astro';
+
+import Memoji from "../assets/Memoji.png";
+import TwatterIcon from "../assets/Project/Twatter.png";
+import SHLIcon from "../assets/Project/SHL.png";
 
 const year = new Date().getFullYear();
 const startYear = 2016;
@@ -56,6 +61,23 @@ const birthyear = 2005
                     I swiftly learned about React.js and Next.js where I would start making some test websites, I also learned how to make backends and things of the sort.
                     This is sort of where I'm at right now, I'm part-time hired as a Web Developer for an agency and I'm also working on some personal projects.
                 </p>
+            </div>
+        </section>
+        <section class="w-full flex flex-col gap-12 px-24 py-12 relative bg-orange-100 overflow-hidden" id="projects">
+            <h1 class="text-4xl font-bold text-center select-none cursor-default text-black">Projects</h1>
+            <div class="grid lg:grid-cols-5 md:grid-cols-4 grid-cols-3 gap-8">
+                <ExpandedCard src={TwatterIcon} alt='Twatter' href='/project/twatter'>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget sapien</p>
+                </ExpandedCard>
+                <ExpandedCard src={SHLIcon} alt='SHL' href='/project/shl'>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget sapien</p>
+                </ExpandedCard>
+                <ExpandedCard src={Memoji} alt='Memoji' href='/project/memoji'>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget sapien</p>
+                </ExpandedCard>
+                <ExpandedCard src={Memoji} alt='Memoji' href='/project/memoji'>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget sapien</p>
+                </ExpandedCard>
             </div>
         </section>
 	</main>
