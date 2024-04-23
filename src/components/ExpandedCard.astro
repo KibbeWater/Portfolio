@@ -18,7 +18,7 @@ let projectName = href.split('/').pop();
     <div class="w-64 h-64 relative">
         <div class='max-w-[16rem] max-h-64 flex rounded-2xl bg-neutral-100 hover:max-h-96 hover:max-w-[28rem] hover:z-10 absolute bottom-0 left-0 transition-all duration-300 overflow-hidden group/card shadow-xl hover:-translate-y-2'>
             <div class="w-64 flex-none">
-                <Image class='h-64 w-64 rounded-2xl object-cover' src={src} alt={alt} transition:persist=`project-icon-${projectName}` transition:animate={'fade'} />
+                <Image class='h-64 w-64 rounded-2xl object-cover' src={src} alt={alt} transition:name=`project-icon-${projectName}` transition:animate={'fade'} />
             </div>
             <div class="w-48 flex flex-col justify-between flex-none px-3 py-3 group-hover/card:opacity-100 opacity-0 transition duration-300">
                 <div class="w-full">
