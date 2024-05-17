@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import MobileCard from './ExpandedCardMobile.astro';
 
 interface Props {
 	src: ImageMetadata;
@@ -14,7 +15,7 @@ const { src, alt, href, socials } = Astro.props;
 let projectName = href.split('/').pop();
 ---
 
-<div class='flex justify-center items-center relative'>
+<div class='hidden justify-center items-center relative sm:flex'>
     <div class="w-64 h-64 relative">
         <div class='max-w-[16rem] max-h-64 flex rounded-2xl bg-neutral-100 hover:max-h-96 hover:max-w-[28rem] hover:z-10 absolute bottom-0 left-0 transition-all duration-300 overflow-hidden group/card shadow-xl hover:-translate-y-2'>
             <div class="w-64 flex-none">
@@ -36,4 +37,6 @@ let projectName = href.split('/').pop();
         </div>
     </div>
 </div>
-
+<div class="sm:hidden block">
+    <MobileCard src={src} href={href} alt={alt} />
+</div>

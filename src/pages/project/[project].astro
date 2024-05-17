@@ -67,7 +67,7 @@ const { title, image, shortDescription, description, socials } = projects[projec
 ---
 
 <Layout title=`Project: ${title}`>
-	<main class='w-screen h-screen bg-gradient-to-br from-orange-300 to-orange-400 flex justify-center items-center relative'>
+	<main class='w-screen min-h-screen bg-gradient-to-br from-orange-300 to-orange-400 flex justify-center items-center relative'>
 		<button
             transition:name="nav"
             transition:animate="fade"
@@ -76,7 +76,7 @@ const { title, image, shortDescription, description, socials } = projects[projec
 		>
 			<Image src={ArrowBack} class='w-full h-full' alt='Back' />
 		</button>
-		<div class='w-9/12 h-4/6 px-4 py-4 rounded-3xl bg-white/25 border border-white/[0.18] shadow-lg backdrop-blur-sm flex gap-8'>
+		<div class='md:w-9/12 h-4/6 md:px-4 w-full px-8 py-4 rounded-3xl md:bg-white/25 md:border md:border-white/[0.18] md:shadow-lg md:backdrop-blur-sm flex flex-col md:flex-row gap-8 md:items-start items-center'>
 			<div class='flex-none flex flex-col gap-4'>
 				<Image
 					src={image}
@@ -92,9 +92,9 @@ const { title, image, shortDescription, description, socials } = projects[projec
                 </div> -->
 			</div>
 			<div>
-				<h1 class='text-4xl font-bold'>{title}</h1>
-				<p class='mb-4 leading-tight'>{shortDescription}</p>
-				<p>{description}</p>
+				<h1 class='text-4xl font-bold text-white md:text-black md:pb-0 pb-1'>{title}</h1>
+				<p class='mb-4 leading-tight text-neutral-100 md:text-neutral-800'>{shortDescription}</p>
+				<p class="text-neutral-100 md:text-neutral-800">{description}</p>
 			</div>
 		</div>
 	</main>
