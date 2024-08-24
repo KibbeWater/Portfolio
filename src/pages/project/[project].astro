@@ -12,90 +12,105 @@ import Globe from '../../assets/Socials/Globe.svg';
 import ArrowBack from '../../assets/Icons/ArrowBack.svg';
 
 export function getStaticPaths() {
-	return [{ params: { project: 'twatter' } }, { params: { project: 'shl' } }];
+    return [{ params: { project: 'twatter' } }, { params: { project: 'shl' } }];
 }
 
 const { project } = Astro.params;
 
 const projects: {
-	[key: string]: {
-		title: string;
-		image: ImageMetadata;
-		shortDescription: string;
-		description: string;
-		socials: { icon: ImageMetadata; name: string; href: string }[];
-	};
+    [key: string]: {
+        title: string;
+        image: ImageMetadata;
+        shortDescription: string;
+        description: string;
+        socials: { icon: ImageMetadata; name: string; href: string }[];
+    };
 } = {
-	twatter: {
-		title: 'Twatter',
-		image: Twatter,
-		shortDescription:
-			'Twatter is a social media platform that allows users to post tweets, follow other users, and like tweets. It was built using React, Node.js, and MongoDB.',
-		description: '',
-		socials: [
-			{
-				icon: Globe,
-				name: 'Website',
-				href: 'https://twatter.kibbewater.com',
-			},
-			{
-				icon: GitHub,
-				name: 'GitHub',
-				href: 'https://github.com/KibbeWater/Twatter',
-			},
-		],
-	},
-	shl: {
-		title: 'SHL Matchtracker',
-		image: SHL,
-		shortDescription:
-			'SHL is an iOS app that allows users to view the current standings, schedule, and statistics for the Swedish Hockey League. It was built using Swift and SwiftUI with a TypeScript backend.',
-		description: [
-			'The app was originally a hobby/prototype project of mine to capture event updates from an Event Stream. I then picked it up as a school project instead, developing it to bring the SHL website (and some more) into an convenient and a beatiful app for your phone. The app is also intended to integrate as much as possible into iOS with features such as Live Activities',
-		].join('\n'),
-		socials: [
-			{
-				icon: GitHub,
-				name: 'GitHub',
-				href: 'https://github.com/KibbeWater/SHL',
-			},
-		],
-	},
+    twatter: {
+        title: 'Twatter',
+        image: Twatter,
+        shortDescription:
+            'Twatter is a social media platform that allows users to post tweets, follow other users, and like tweets. It was built using React, Node.js, and MongoDB.',
+        description: '',
+        socials: [
+            {
+                icon: Globe,
+                name: 'Website',
+                href: 'https://twatter.kibbewater.com',
+            },
+            {
+                icon: GitHub,
+                name: 'GitHub',
+                href: 'https://github.com/KibbeWater/Twatter',
+            },
+        ],
+    },
+    shl: {
+        title: 'SHL Matchtracker',
+        image: SHL,
+        shortDescription:
+            'SHL is an iOS app that allows users to view the current standings, schedule, and statistics for the Swedish Hockey League. It was built using Swift and SwiftUI with a TypeScript backend.',
+        description: [
+            'The app was originally a hobby/prototype project of mine to capture event updates from an Event Stream. I then picked it up as a school project instead, developing it to bring the SHL website (and some more) into an convenient and a beatiful app for your phone. The app is also intended to integrate as much as possible into iOS with features such as Live Activities',
+        ].join('\n'),
+        socials: [
+            {
+                icon: GitHub,
+                name: 'GitHub',
+                href: 'https://github.com/KibbeWater/SHL',
+            },
+        ],
+    },
 };
 
-const { title, image, shortDescription, description, socials } = projects[project];
+const { title, image, shortDescription, description, socials } =
+    projects[project];
 ---
 
 <Layout title=`Project: ${title}`>
-	<main class='w-screen min-h-screen bg-gradient-to-br from-orange-300 to-orange-400 flex justify-center items-center relative'>
-		<button
-            transition:name="nav"
-            transition:animate="fade"
-			class='absolute top-4 left-4 w-8 h-8 p-[.375rem] rounded-full bg-white/25 border border-white/[0.18] drop-shadow hover:bg-white/30 hover:drop-shadow-xl hover:-translate-y-1 transition-all backdrop-blur-sm'
-			onclick='history.back()'
-		>
-			<Image src={ArrowBack} class='w-full h-full' alt='Back' />
-		</button>
-		<div class='md:w-9/12 h-4/6 md:px-4 w-full px-8 py-4 rounded-3xl md:bg-white/25 md:border md:border-white/[0.18] md:shadow-lg md:backdrop-blur-sm flex flex-col md:flex-row gap-8 md:items-start items-center'>
-			<div class='flex-none flex flex-col gap-4'>
-				<Image
-					src={image}
-					alt={title}
-					class='h-64 w-64 rounded-2xl object-cover'
-					transition:name=`project-icon-${project}`
-					transition:animate={'fade'}
-				/>
-				<!-- <div class="flex gap-2">
+    <main
+        class='w-screen min-h-[100dvh] bg-gradient-to-br from-orange-300 to-orange-400 flex justify-center items-center relative'
+    >
+        <button
+            transition:name='nav'
+            transition:animate='fade'
+            class='absolute top-4 left-4 w-8 h-8 p-[.375rem] rounded-full bg-white/25 border border-white/[0.18] drop-shadow hover:bg-white/30 hover:drop-shadow-xl hover:-translate-y-1 transition-all backdrop-blur-sm'
+            onclick='history.back()'
+        >
+            <Image src={ArrowBack} class='w-full h-full' alt='Back' />
+        </button>
+        <div
+            class='md:w-9/12 h-4/6 md:px-4 w-full px-8 py-4 rounded-3xl md:bg-white/25 md:border md:border-white/[0.18] md:shadow-lg md:backdrop-blur-sm flex flex-col md:flex-row gap-8 md:items-start items-center'
+        >
+            <div class='flex-none flex flex-col gap-4'>
+                <Image
+                    src={image}
+                    alt={title}
+                    class='h-64 w-64 rounded-2xl object-cover'
+                    transition:name=`project-icon-${project}`
+                    transition:animate={'fade'}
+                />
+                <!-- <div class="flex gap-2">
                     {socials.map((({icon, name, href}) => (
                         <a href={href} target="_blank" transition:name={`project-s-${name}-${project}`}><Image src={icon} class="w-7 h-7 rounded-full" alt={name} /></a>
                     )))}
                 </div> -->
-			</div>
-			<div>
-				<h1 class='text-4xl font-bold text-white md:text-black md:pb-0 pb-1'>{title}</h1>
-				<p class='mb-4 leading-tight text-neutral-100 md:text-neutral-800'>{shortDescription}</p>
-				<p class="text-neutral-100 md:text-neutral-800">{description}</p>
-			</div>
-		</div>
-	</main>
+            </div>
+            <div>
+                <h1
+                    class='text-4xl font-bold text-white md:text-black md:pb-0 pb-1'
+                >
+                    {title}
+                </h1>
+                <p
+                    class='mb-4 leading-tight text-neutral-100 md:text-neutral-800'
+                >
+                    {shortDescription}
+                </p>
+                <p class='text-neutral-100 md:text-neutral-800'>
+                    {description}
+                </p>
+            </div>
+        </div>
+    </main>
 </Layout>

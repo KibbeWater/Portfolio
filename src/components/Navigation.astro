@@ -1,6 +1,6 @@
---- 
+---
 interface Props {
-	className: string;
+    className: string;
 }
 
 const { className } = Astro.props;
@@ -21,8 +21,8 @@ const { className } = Astro.props;
     }
 
     .nav-item::before {
-        content: " ";
-        width: 0.375rem; 
+        content: ' ';
+        width: 0.375rem;
         height: 0.375rem;
         border-radius: 100%;
         background-color: rgb(235 235 235);
@@ -37,11 +37,30 @@ const { className } = Astro.props;
     }
 </style>
 
-<nav class={className} transition:name="nav" transition:animate="fade">
-    <ul class="p-4 bg-white/25 border border-white/[0.18] shadow-lg backdrop-blur-sm rounded-[1rem] w-auto max-w-[2rem] hover:max-w-[7.5rem] overflow-hidden transition-all duration-500 group/nav">
-        <li class="nav-item group nav-active"><a class="group-hover/nav:opacity-100 opacity-0 transition delay-100 duration-500 group-[.nav-active]:!text-white group-[.nav-active]:font-semibold hover:text-white text-[#ebebeb] whitespace-nowrap" href="/#home">Home</a></li>
-        <li class="nav-item"><a class="group-hover/nav:opacity-100 opacity-0 transition delay-100 duration-500 group-[.nav-active]:!text-white group-[.nav-active]:font-semibold hover:text-white text-[#ebebeb] whitespace-nowrap" href="/#about-me">About me</a></li>
-        <li class="nav-item"><a class="group-hover/nav:opacity-100 opacity-0 transition delay-100 duration-500 group-[.nav-active]:!text-white group-[.nav-active]:font-semibold hover:text-white text-[#ebebeb] whitespace-nowrap" href="/#projects">Projects</a></li>
+<nav class={className} transition:name='nav' transition:animate='fade'>
+    <ul
+        class='p-4 bg-white/25 border border-white/[0.18] shadow-lg backdrop-blur-sm rounded-[1rem] w-auto max-w-[2rem] hover:max-w-[7.5rem] overflow-hidden transition-all duration-500 group/nav'
+    >
+        <li class='nav-item group nav-active'>
+            <a
+                class='group-hover/nav:opacity-100 opacity-0 transition delay-100 duration-500 group-[.nav-active]:!text-white group-[.nav-active]:font-semibold hover:text-white text-[#ebebeb] whitespace-nowrap'
+                href='/#home'>Home</a>
+        </li>
+        <li class='nav-item'>
+            <a
+                class='group-hover/nav:opacity-100 opacity-0 transition delay-100 duration-500 group-[.nav-active]:!text-white group-[.nav-active]:font-semibold hover:text-white text-[#ebebeb] whitespace-nowrap'
+                href='/#skills'>Skills</a>
+        </li>
+        <li class='nav-item'>
+            <a
+                class='group-hover/nav:opacity-100 opacity-0 transition delay-100 duration-500 group-[.nav-active]:!text-white group-[.nav-active]:font-semibold hover:text-white text-[#ebebeb] whitespace-nowrap'
+                href='/#about-me'>About me</a>
+        </li>
+        <li class='nav-item'>
+            <a
+                class='group-hover/nav:opacity-100 opacity-0 transition delay-100 duration-500 group-[.nav-active]:!text-white group-[.nav-active]:font-semibold hover:text-white text-[#ebebeb] whitespace-nowrap'
+                href='/#projects'>Projects</a>
+        </li>
         <!-- <li class="nav-item"><a class="group-hover/nav:opacity-100 opacity-0 transition delay-100 duration-500 group-[.nav-active]:!text-white group-[.nav-active]:font-semibold hover:text-white text-[#ebebeb] whitespace-nowrap" href="index.php">Projects</a></li>
         <li class="nav-item"><a class="group-hover/nav:opacity-100 opacity-0 transition delay-100 duration-500 group-[.nav-active]:!text-white group-[.nav-active]:font-semibold hover:text-white text-[#ebebeb] whitespace-nowrap" href="index.php">Test thing</a></li> -->
     </ul>

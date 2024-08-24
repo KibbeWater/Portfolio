@@ -1,26 +1,20 @@
 ---
-import { Image } from "astro:assets";
-import Memoji from "../assets/Memoji.png";
+import { Image } from 'astro:assets';
+import Memoji from '../assets/Memoji.png';
 ---
 
-<style>
-    .memoji-img::after {
-        content: " ";
-        position: absolute;
-        width: 50%;
-        bottom: 0;
-        left: 0;
-
-        border-bottom-left-radius: 100%;
-        overflow: hidden;
-        
-    }
-</style>
-
-<div class="relative w-48 h-48 rounded-full shadow-xl">
-    <div class="h-72 w-72 bottom-0 left-0 rounded-bl-[6rem] overflow-hidden absolute flex items-end z-20">
-        <div class="rounded-full w-48 h-48 bg-gradient-to-br from-orange-200 to-orange-300 relative">
-            <Image src={Memoji} alt="Memoji" class="max-w-[16rem] absolute bottom-0 -left-[2.9rem] w-[14.2rem]" />
+<div class='relative w-96 h-96 rounded-full shadow-xl'>
+    <div
+        class='h-[28rem] w-[28rem] bottom-0 left-0 rounded-bl-[12rem] overflow-hidden absolute flex items-end z-20'
+    >
+        <div
+            class='rounded-full w-96 h-96 bg-gradient-to-br from-orange-200 to-orange-300 relative'
+        >
+            <Image
+                src={Memoji}
+                alt='Memoji'
+                class='absolute bottom-0 -left-[4.8rem] max-w-[26rem] w-[26rem]'
+            />
         </div>
     </div>
 </div>

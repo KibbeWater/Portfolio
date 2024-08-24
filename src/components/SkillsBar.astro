@@ -1,0 +1,47 @@
+---
+interface Props {
+    className?: string;
+
+    accentColor?: string;
+    title: String;
+    value: Number;
+    maxValue: Number;
+    precision?: Number;
+}
+
+const {
+    title,
+    value,
+    maxValue,
+    precision: _precision,
+    accentColor: _accentColor,
+} = Astro.props;
+const precision = _precision ?? 10;
+const accentColor = _accentColor ?? '#ea580c';
+---
+
+<div>
+    <div class='flex justify-between items-end'>
+        <p class='text-lg'>{title}</p>
+        <div class='text-sm flex font-semibold'>
+            <p>{value}</p>
+            <p class='px-1'>/</p>
+            <p>{maxValue}</p>
+        </div>
+    </div>
+    <div
+        class='grid w-full h-2 rounded-full overflow-hidden'
+        style={`grid-template-columns: repeat(${maxValue * precision}, minmax(0, 1fr));`}
+    >
+        <div
+            class='h-full w-full'
+            style={`background-color:${accentColor};grid-column: span ${~~(value * precision)} / span ${~~(value * precision)};`}
+        >
+        </div>
+        <div
+            class='h-full w-full bg-black/30'
+            style={`grid-column: span ${~~((maxValue - value) * precision)} / span ${~~((maxValue - value) * precision)};${maxValue == value ? 'display:none;' : ''}`}
+        >
+        </div>
+    </div>
+</div>

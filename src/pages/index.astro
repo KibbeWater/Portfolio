@@ -1,92 +1,244 @@
 ---
 import ExpandedCard from '../components/ExpandedCard.astro';
 import ImagePopout from '../components/ImagePopout.astro';
+import ImagePopoutSM from '../components/ImagePopoutSM.astro';
 import Navigation from '../components/Navigation.astro';
+import SkillsBar from '../components/SkillsBar.astro';
 import Layout from '../layouts/Layout.astro';
 
-import Memoji from "../assets/Memoji.png";
-import TwatterIcon from "../assets/Project/Twatter.png";
-import SHLIcon from "../assets/Project/SHL.png";
+import TwatterIcon from '../assets/Project/Twatter.png';
+import SHLIcon from '../assets/Project/SHL.png';
 
-import GithubIcon from "../assets/Socials/Github.svg";
-import GlobeIcon from "../assets/Socials/Globe.svg";
+import GithubIcon from '../assets/Socials/Github.svg';
+import GlobeIcon from '../assets/Socials/Globe.svg';
 
 const year = new Date().getFullYear();
 const startYear = 2016;
-const birthyear = 2005
+const birthyear = 2005;
+
+const languages: { name: string; experience: number; color?: string }[] = [
+    {
+        name: 'Swift',
+        experience: 7,
+        color: '#F05138',
+    },
+    {
+        name: 'JavaScript + React',
+        experience: 10,
+        color: '#3178c6',
+    },
+    {
+        name: 'Go',
+        experience: 5,
+        color: '#00ADD8',
+    },
+    {
+        name: 'Lua',
+        experience: 8,
+        color: '#000080',
+    },
+    {
+        name: 'C++',
+        experience: 5,
+        color: '#f34b7d',
+    },
+    {
+        name: 'C#',
+        experience: 8.5,
+        color: '#178600',
+    },
+].sort((a, b) => b.experience - a.experience);
 ---
 
-<Layout title="KibbeWater">
-	<main class="w-screen relative">
-		<Navigation className='fixed z-50 top-4 left-4' />
-        <section class="w-full h-screen flex justify-evenly bg-gradient-to-br from-orange-300 to-orange-400 drop-shadow-lg" id="home">
-            <div class="justify-center items-center flex gap-12 sm:flex-row flex-col-reverse">
+<Layout title='KibbeWater'>
+    <main class='w-screen relative'>
+        <Navigation className='fixed z-50 top-4 left-4' />
+        <section
+            class='w-full h-[100dvh] flex justify-evenly bg-gradient-to-br from-orange-300 to-orange-400 drop-shadow-lg'
+            id='home'
+        >
+            <div
+                class='justify-center items-center flex gap-24 sm:flex-row flex-col-reverse'
+            >
                 <div>
-                    <h1 class="text-4xl font-bold text-white select-none cursor-default">Hello, I'm <span class="bg-gradient-to-br bg-clip-text text-transparent from-blue-600 to-cyan-400">Snow</span> 👋🏻</h1>
-                    <p class="text-lg text-white select-none cursor-default">Hobbyist Full-Stack Web Developer</p>
+                    <h1
+                        class='md:text-6xl text-3xl font-bold text-white select-none cursor-default'
+                    >
+                        Hello, I'm <span
+                            class='bg-gradient-to-br bg-clip-text text-transparent from-blue-600 to-cyan-400'
+                            >Snow</span
+                        > 👋🏻
+                    </h1>
+                    <p
+                        class='md:text-4xl text-xl text-white select-none cursor-default'
+                    >
+                        Hobbyist Full-Stack Web Developer
+                    </p>
                 </div>
-                <ImagePopout />
+                <div class='hidden md:block'>
+                    <ImagePopout />
+                </div>
+                <div class='md:hidden'>
+                    <ImagePopoutSM />
+                </div>
             </div>
         </section>
-        <section class="min-w-[100vw] py-12 flex flex-col gap-8 container justify-center bg-orange-300" id="about-me">
-            <h1 class="text-4xl font-bold text-center select-none cursor-default text-white">Who am I?</h1>
-            <div class="flex flex-col gap-6 text-neutral-100 text-lg font-medium text-center">
-                <p>I'm a {year - birthyear} year old student from Sweden. I'm highly interested in Software/Web Development and other electronics</p>
-                <p>
-                    I've been a coder since 5th grade which is now about {year - startYear} years ago. 
-                    I started out learning Unity and Game Development, there I learned C# during my journey, 
-                    this would inevitably start my long coding journey. As I'm now self-learnt in JS/TS, C#, C/C++, Lua and PHP. 
-                    I'm also currently learning about some Web frameworks, mostly React.js along with Next.js.
-                </p>
-                <p>
-                    I was always interested in computers as a kid and was usually spending my time learning how to work them, 
-                    I was usually the "IT kid" who would help out if there were issues with computers in the school. 
-                    I then around 4th grade started attending a tech club sort of where they did some basic coding on what's called a "CodeBug", 
-                    it's like a programmable chip with some LEDs and buttons for a younger audience. 
-                    I eventually stopped going there cause it was pretty underwhelming and about a year or 2 later started coding in Unity to go on to create several hobby projects
-                </p>
-                <p>
-                    I was learning coding in Unity up until 7th grade when I started branching out to creating software that (mostly) could solve some niche problems of mine.
-                </p>
-                <p>
-                    It wasn't until the next year I started with other languages such as PHP and Lua. 
-                    I started doing some hobby projects in PHP and would eventually ended up creating my first website.
-                    During this time I also learned Lua which I would end up working for several years and start to get my first source of income selling LUA scripts, 
-                    I won't mention what I made but you will no doubt find it by googling my name. 
-                    I would end up doing this for another 2 years where I started getting into C/C++ and JS
-                </p>
-                <p>
-                    In my first year of High School, I began reverse engineering software and coding in C/C++,
-                    this led me to learn some barebone game hacking/reversing using mostly static analysis tools.
-                </p>
-                <p>
-                    After the first term of the first year, I started learning JavaScript as I was interested in learning how to do modern web development, 
-                    I swiftly learned about React.js and Next.js where I would start making some test websites, I also learned how to make backends and things of the sort.
-                    This is sort of where I'm at right now, I'm part-time hired as a Web Developer for an agency and I'm also working on some personal projects.
+        <section
+            class='min-w-[100vw] flex justify-center py-12 bg-orange-400'
+            id='skills'
+        >
+            <div class='container grid md:grid-cols-2 grid-cols-1 gap-8'>
+                <div class='px-8 text-white'>
+                    <h3 class='text-3xl mb-4 font-semibold'>Languages</h3>
+                    <div
+                        class='flex flex-col gap-2 p-4 rounded-xl bg-white/30 border border-white/20'
+                    >
+                        {
+                            languages.map((lang) => (
+                                <SkillsBar
+                                    title={lang.name}
+                                    maxValue={10}
+                                    value={lang.experience}
+                                    accentColor={lang.color}
+                                />
+                            ))
+                        }
+                    </div>
+                </div>
+                <div class='px-8 text-white'>
+                    <h3 class='text-3xl mb-4 font-semibold'>Languages</h3>
+                    <div
+                        class='flex flex-col gap-2 p-4 rounded-xl bg-white/30 border border-white/20'
+                    >
+                        {
+                            languages.map((lang) => (
+                                <SkillsBar
+                                    title={lang.name}
+                                    maxValue={10}
+                                    value={lang.experience}
+                                    accentColor={lang.color}
+                                />
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section
+            class='min-w-[100vw] py-12 flex gap-8 justify-center bg-orange-300'
+            id='about-me'
+        >
+            <div class='container'>
+                <h1
+                    class='text-6xl pb-8 font-bold text-center select-none cursor-default text-white'
+                >
+                    Who am I?
+                </h1>
+                <p class='text-neutral-100 text-lg font-medium text-center'>
+                    I’m a {year - birthyear}-year-old student from Sweden. I’m
+                    passionate about Software/Web Development and other
+                    electronics.
+                    <br /><br />
+                    I’ve been coding since the 5th grade, which is about {
+                        year - startYear
+                    } years ago. I started with Unity and Game Development, where
+                    I learned C#. This sparked my long coding journey. Now, I’m self-taught
+                    in JavaScript/TypeScript, C#, C/C++, Lua, and PHP. I’m also currently
+                    exploring web frameworks, particularly React.js and Next.js.
+                    <br /><br />
+                    As a kid, I was always fascinated by computers. I spent countless
+                    hours learning how to work them. I was often the “IT kid” who
+                    helped others with computer issues at school. Around the 4th
+                    grade, I joined a tech club where we did basic coding on a programmable
+                    chip called a “CodeBug.” It was like a fun and interactive way
+                    to learn programming for younger audiences. However, I eventually
+                    stopped attending the club because it wasn’t very engaging.
+                    <br /><br />
+                    A year or two later, I decided to dive deeper into coding and
+                    started using Unity to create several hobby projects. I continued
+                    learning Unity until the 7th grade when I decided to branch out
+                    and create software that could solve specific problems I faced.
+                    <br /><br />
+                    In the following year, I expanded my language skills to include
+                    PHP and Lua. I started working on hobby projects in PHP and eventually
+                    created my first website. During this time, I also learned Lua,
+                    which I continued to work with for several years. I even started
+                    selling LUA scripts as a source of income. I won’t disclose the
+                    specifics of my creations, but you can likely find them by searching
+                    for my name online.
+                    <br /><br />
+                    I continued this journey for another two years, where I delved
+                    into C/C++ and JavaScript. In my first year of high school, I
+                    embarked on a new adventure by reverse engineering software and
+                    coding in C/C++. This led me to explore game hacking and reversing
+                    using mostly static analysis tools. After completing the first
+                    term of my first year, I embarked on a journey to learn JavaScript,
+                    driven by my passion for modern web development. I quickly discovered
+                    React.js and Next.js, which ignited my enthusiasm to create test
+                    websites. Additionally, I delved into backend development and
+                    other related concepts. This is where I currently stand, working
+                    part-time as a Web Developer for an agency while simultaneously
+                    pursuing personal projects.
                 </p>
             </div>
         </section>
-        <section class="min-w-[100vw] flex flex-col gap-12 container py-12 relative bg-orange-100 overflow-hidden" id="projects">
-            <h1 class="text-4xl font-bold text-center select-none cursor-default text-black">Projects</h1>
-            <div class="grid lg:grid-cols-5 md:grid-cols-4 grid-cols-3 gap-8 px-8">
-                <ExpandedCard src={TwatterIcon} alt='Twatter' href='/project/twatter' socials={[
-                    { icon: GlobeIcon, name: 'Website', href: 'https://twatter.kibbewater.com' },
-                    { icon: GithubIcon, name: 'GitHub', href: 'https://github.com/KibbeWater/Twatter' },
-                ]}>
-                    <p class="text-sm">
-                        <span class="font-semibold text-base">Twatter</span><br />
-                        A social media platform that allows users to post tweets, follow other users, and like tweets. It was built using React, Next.js and the T3 stack.
+        <section
+            class='min-w-[100vw] flex flex-col gap-12 container py-12 relative bg-orange-100 overflow-hidden'
+            id='projects'
+        >
+            <h1
+                class='text-4xl font-bold text-center select-none cursor-default text-black'
+            >
+                Projects
+            </h1>
+            <div
+                class='grid lg:grid-cols-5 md:grid-cols-4 grid-cols-3 gap-8 px-8'
+            >
+                <ExpandedCard
+                    src={TwatterIcon}
+                    alt='Twatter'
+                    href='/project/twatter'
+                    socials={[
+                        {
+                            icon: GlobeIcon,
+                            name: 'Website',
+                            href: 'https://twatter.kibbewater.com',
+                        },
+                        {
+                            icon: GithubIcon,
+                            name: 'GitHub',
+                            href: 'https://github.com/KibbeWater/Twatter',
+                        },
+                    ]}
+                >
+                    <p class='text-sm'>
+                        <span class='font-semibold text-base'>Twatter</span><br
+                        />
+                        A social media platform that allows users to post tweets,
+                        follow other users, and like tweets. It was built using React,
+                        Next.js and the T3 stack.
                     </p>
                 </ExpandedCard>
-                <ExpandedCard src={SHLIcon} alt='SHL' href='/project/shl' socials={[
-                    { icon: GithubIcon, name: 'GitHub', href: 'https://github.com/KibbeWater/SHL' },
-                ]}>
-                    <p class="text-sm">
-                        <span class="font-semibold text-base">SHL</span><br />
-                        An iOS app that allows users to view the current standings, schedule, and statistics for the Swedish Hockey League. It was built using SwiftUI with a TypeScript backend.
+                <ExpandedCard
+                    src={SHLIcon}
+                    alt='SHL'
+                    href='/project/shl'
+                    socials={[
+                        {
+                            icon: GithubIcon,
+                            name: 'GitHub',
+                            href: 'https://github.com/KibbeWater/SHL',
+                        },
+                    ]}
+                >
+                    <p class='text-sm'>
+                        <span class='font-semibold text-base'>SHL</span><br />
+                        An iOS app that allows users to view the current standings,
+                        schedule, and statistics for the Swedish Hockey League. It
+                        was built using SwiftUI with a TypeScript backend.
                     </p>
                 </ExpandedCard>
             </div>
         </section>
-	</main>
+    </main>
 </Layout>
