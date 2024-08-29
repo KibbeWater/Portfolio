@@ -8,9 +8,12 @@ import Layout from '../layouts/Layout.astro';
 
 import TwatterIcon from '../assets/Project/Twatter.png';
 import SHLIcon from '../assets/Project/SHL.png';
+import ReturnDislikesIcon from '../assets/Project/ReturnDislikes.png';
+import SkippyIcon from '../assets/Project/Skippy.png';
 
 import GithubIcon from '../assets/Socials/Github.svg';
 import GlobeIcon from '../assets/Socials/Globe.svg';
+import AppStoreIcon from '../assets/Socials/AppStore.svg';
 
 const year = new Date().getFullYear();
 const startYear = 2016;
@@ -220,6 +223,57 @@ const languages: { name: string; experience: number; color?: string }[] = [
                     </p>
                 </ExpandedCard>
                 <ExpandedCard
+                    src={ReturnDislikesIcon}
+                    alt='Return Dislikes'
+                    href='/project/return-dislikes'
+                    socials={[
+                        {
+                            icon: GithubIcon,
+                            name: 'GitHub',
+                            href: 'https://github.com/KibbeWater/YoutubeDislikes',
+                        },
+                        {
+                            icon: AppStoreIcon,
+                            name: 'AppStore',
+                            href: 'https://apps.apple.com/app/return-dislikes/id6605923430',
+                        },
+                    ]}
+                >
+                    <p class='text-sm'>
+                        <span class='font-semibold text-base'
+                            >Return Dislikes</span
+                        ><br />
+                        Safari port of the return-youtube-dislikes project. Will
+                        add back the dislike counter on youtube videos after the
+                        2021 removal of the dislike counter
+                    </p>
+                </ExpandedCard>
+                <ExpandedCard
+                    src={SkippyIcon}
+                    alt='Skippy'
+                    href='/project/skippy'
+                    socials={[
+                        {
+                            icon: GithubIcon,
+                            name: 'GitHub',
+                            href: 'https://github.com/KibbeWater/Skippy',
+                        },
+                        {
+                            icon: AppStoreIcon,
+                            name: 'AppStore',
+                            href: 'https://apps.apple.com/app/skippy-for-youtube/id6636553642',
+                        },
+                    ]}
+                >
+                    <p class='text-sm'>
+                        <span class='font-semibold text-base'>Skippy</span><br
+                        />
+                        Skippy, a Safari extension, automatically seeks past ads.
+                        Unlike other adblockers, it acts like an ad skipper to avoid
+                        adblocker detections.
+                    </p>
+                </ExpandedCard>
+                <ExpandedCard
                     src={SHLIcon}
                     alt='SHL'
                     href='/project/shl'
@@ -228,6 +282,11 @@ const languages: { name: string; experience: number; color?: string }[] = [
                             icon: GithubIcon,
                             name: 'GitHub',
                             href: 'https://github.com/KibbeWater/SHL',
+                        },
+                        {
+                            icon: AppStoreIcon,
+                            name: 'AppStore',
+                            href: 'https://apps.apple.com/app/shl-matchtracker/id6479990812',
                         },
                     ]}
                 >
