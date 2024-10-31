@@ -19,10 +19,16 @@ const year = new Date().getFullYear();
 const startYear = 2016;
 const birthYear = 2005;
 
-const languages: { name: string; experience: number; color?: string }[] = [
+type Experience = {
+    name: string;
+    experience: number;
+    color?: string;
+};
+
+const languages: Experience[] = [
     {
         name: 'Swift',
-        experience: 7,
+        experience: 9,
         color: '#F05138',
     },
     {
@@ -42,7 +48,7 @@ const languages: { name: string; experience: number; color?: string }[] = [
     },
     {
         name: 'C++',
-        experience: 5,
+        experience: 6,
         color: '#f34b7d',
     },
     {
@@ -51,6 +57,13 @@ const languages: { name: string; experience: number; color?: string }[] = [
         color: '#178600',
     },
 ].sort((a, b) => b.experience - a.experience);
+
+const frameworks: Experience[] = [
+    { name: 'React', experience: 10, color: '#58c4dc' },
+    { name: 'Next.js', experience: 10, color: '#111111' },
+    { name: 'Astro', experience: 8, color: '#c43e6b' },
+    { name: 'Vue', experience: 5, color: '#42d392' },
+];
 ---
 
 <Layout title='KibbeWater'>
@@ -114,7 +127,7 @@ const languages: { name: string; experience: number; color?: string }[] = [
                         class='flex flex-col gap-2 p-4 rounded-xl bg-white/30 border border-white/20'
                     >
                         {
-                            languages.map((lang) => (
+                            frameworks.map((lang) => (
                                 <SkillsBar
                                     title={lang.name}
                                     maxValue={10}
